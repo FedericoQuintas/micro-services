@@ -1,4 +1,4 @@
-package de.bonify.config.copy;
+package de.bonify.session.config;
 
 import java.io.IOException;
 

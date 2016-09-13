@@ -1,4 +1,4 @@
-package de.bonify.config;
+package de.bonify.session.config;
 
 import org.springframework.boot.autoconfigure.security.SecurityProperties;
 import org.springframework.context.annotation.Bean;
