@@ -5,6 +5,7 @@ import de.bonify.news.exception.InvalidNewsCreationException;
 public class NewsBuilder {
 
 	private Long channelId;
+	private Long id;
 
 	public NewsBuilder withChannelId(Long channelId) {
 		this.channelId = channelId;
@@ -13,13 +14,23 @@ public class NewsBuilder {
 
 	public News build() {
 		validate();
-		return new News(channelId);
+		return new News(channelId, id);
 	}
 
 	private void validate() {
-		if (channelId == null){
+		validateField(channelId);
+		validateField(id);
+	}
+
+	private void validateField(Long field) {
+		if (field == null){
 			throw new InvalidNewsCreationException("Invalid news creation");
 		}
+	}
+
+	public NewsBuilder withId(Long id) {
+		this.id = id;
+		return this;
 	}
 
 }

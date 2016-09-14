@@ -1,6 +1,8 @@
 package de.bonify.news;
 
 import static org.junit.Assert.fail;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.verify;
 
 import org.junit.Assert;
 import org.junit.Before;
@@ -10,18 +12,20 @@ import de.bonify.news.domain.News;
 import de.bonify.news.domain.NewsRepository;
 import de.bonify.news.exception.InvalidNewsCreationException;
 import de.bonify.news.service.CreationNewsService;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.verify;
+import de.bonify.news.service.CreationNewsServiceImpl;
+import de.bonify.notification.service.NotificationService;
 
 public class CreationNewsServiceTest {
 
 	private CreationNewsService creationNewsService;
 	private NewsRepository mockedNewsRepository;
+	private NotificationService mockedNotificationService;
 
 	@Before
 	public void before(){
 		mockedNewsRepository = mock(NewsRepository.class);
-		creationNewsService = new CreationNewsServiceImpl(mockedNewsRepository);
+		mockedNotificationService = mock(NotificationService.class);
+		creationNewsService = new CreationNewsServiceImpl(mockedNewsRepository, mockedNotificationService);
 	}
 	
 	@Test
@@ -30,6 +34,15 @@ public class CreationNewsServiceTest {
 		News news = creationNewsService.createNews(1L);
 		
 		Assert.assertEquals(new Long(1), news.getChannelId());
+		
+	}
+	
+	@Test
+	public void whenNewsIsCreatedThenNewsHasID(){
+		
+		News news = creationNewsService.createNews(1L);
+		
+		Assert.assertEquals(new Long(1), news.getId());
 		
 	}
 	
@@ -57,7 +70,7 @@ public class CreationNewsServiceTest {
 		
 		News news = creationNewsService.createNews(1L);
 		
-		verify(mockedNewsRepository).store(news);
+		verify(mockedNotificationService).newsCreated(news.getId(), news.getChannelId());
 		
 	}
 	
