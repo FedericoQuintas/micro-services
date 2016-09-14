@@ -4,6 +4,8 @@ import static org.junit.Assert.fail;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 
+import java.util.concurrent.Executors;
+
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -25,7 +27,7 @@ public class CreationNewsServiceTest {
 	public void before(){
 		mockedNewsRepository = mock(NewsRepository.class);
 		mockedNotificationService = mock(NotificationService.class);
-		creationNewsService = new CreationNewsServiceImpl(mockedNewsRepository, mockedNotificationService);
+		creationNewsService = new CreationNewsServiceImpl(mockedNewsRepository, mockedNotificationService, Executors.newSingleThreadExecutor());
 	}
 	
 	@Test

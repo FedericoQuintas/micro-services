@@ -1,0 +1,9 @@
+de/bonify/news/domain/News.class
+de/bonify/news/config/NewsServer.class
+de/bonify/Main.class
+de/bonify/registration/RegistrationServer.class
+de/bonify/news/service/CreationNewsService.class
+de/bonify/news/service/CreationNewsServiceImpl.class
+de/bonify/news/domain/NewsRepository.class
+de/bonify/news/exception/InvalidNewsCreationException.class
+de/bonify/news/domain/NewsBuilder.class

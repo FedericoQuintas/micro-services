@@ -1,0 +1,9 @@
+/home/federico/Desktop/challenge/src/main/java/de/bonify/registration/RegistrationServer.java
+/home/federico/Desktop/challenge/src/main/java/de/bonify/Main.java
+/home/federico/Desktop/challenge/src/main/java/de/bonify/news/domain/News.java
+/home/federico/Desktop/challenge/src/main/java/de/bonify/news/service/CreationNewsService.java
+/home/federico/Desktop/challenge/src/main/java/de/bonify/news/exception/InvalidNewsCreationException.java
+/home/federico/Desktop/challenge/src/main/java/de/bonify/news/domain/NewsRepository.java
+/home/federico/Desktop/challenge/src/main/java/de/bonify/news/domain/NewsBuilder.java
+/home/federico/Desktop/challenge/src/main/java/de/bonify/news/service/CreationNewsServiceImpl.java
+/home/federico/Desktop/challenge/src/main/java/de/bonify/news/config/NewsServer.java
