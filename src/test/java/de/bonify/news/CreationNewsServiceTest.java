@@ -3,8 +3,7 @@ package de.bonify.news;
 import static org.junit.Assert.fail;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
-
-import java.util.concurrent.Executors;
+import static org.mockito.Mockito.when;
 
 import org.junit.Assert;
 import org.junit.Before;
@@ -15,19 +14,20 @@ import de.bonify.news.domain.NewsRepository;
 import de.bonify.news.exception.InvalidNewsCreationException;
 import de.bonify.news.service.CreationNewsService;
 import de.bonify.news.service.CreationNewsServiceImpl;
-import de.bonify.notification.service.NotificationService;
+import de.bonify.notification.queue.NotificationQueue;
 
 public class CreationNewsServiceTest {
 
 	private CreationNewsService creationNewsService;
 	private NewsRepository mockedNewsRepository;
-	private NotificationService mockedNotificationService;
+	private NotificationQueue mockedNotificationQueue;
 
 	@Before
 	public void before(){
 		mockedNewsRepository = mock(NewsRepository.class);
-		mockedNotificationService = mock(NotificationService.class);
-		creationNewsService = new CreationNewsServiceImpl(mockedNewsRepository, mockedNotificationService, Executors.newSingleThreadExecutor());
+		when(mockedNewsRepository.getNextId()).thenReturn(new Long(1));
+		mockedNotificationQueue = mock(NotificationQueue.class);
+		creationNewsService = new CreationNewsServiceImpl(mockedNewsRepository, mockedNotificationQueue);
 	}
 	
 	@Test
@@ -50,6 +50,7 @@ public class CreationNewsServiceTest {
 	
 	@Test
 	public void whenNewsIsCreatedWithNullChannelIdThenExceptionIsThrown(){
+		when(mockedNewsRepository.getNextId()).thenReturn(null);
 		try {
 			creationNewsService.createNews(null);
 			fail();
@@ -68,11 +69,20 @@ public class CreationNewsServiceTest {
 	}
 	
 	@Test
-	public void whenNewsIsCreatedThenNotificationServiceIsCalled(){
+	public void whenNewsIsCreatedThenNotificationQueueIsCalled(){
 		
-		News news = creationNewsService.createNews(1L);
+		creationNewsService.createNews(1L);
 		
-		verify(mockedNotificationService).newsCreated(news.getId(), news.getChannelId());
+		verify(mockedNotificationQueue).notify(Long.valueOf(1).toString());
+		
+	}
+	
+	@Test
+	public void whenNewsIsCreatedThenRepositoryRetrivesNextId(){
+		
+		creationNewsService.createNews(1L);
+		
+		verify(mockedNewsRepository).getNextId();
 		
 	}
 	

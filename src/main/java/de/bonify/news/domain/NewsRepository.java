@@ -4,4 +4,6 @@ public interface NewsRepository {
 
 	void store(News news);
 
+	Long getNextId();
+
 }

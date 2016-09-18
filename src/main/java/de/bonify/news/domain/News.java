@@ -1,5 +1,6 @@
 package de.bonify.news.domain;
 
+
 public class News {
 
 	private Long channelId;
