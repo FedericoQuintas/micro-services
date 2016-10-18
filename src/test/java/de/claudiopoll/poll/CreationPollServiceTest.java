@@ -55,7 +55,7 @@ public class CreationPollServiceTest {
 			creationNewsService.createNews(null);
 			fail();
 		} catch (InvalidPollCreationException ex) {
-			Assert.assertEquals("Invalid news creation", ex.getMessage());
+			Assert.assertEquals("Invalid poll creation", ex.getMessage());
 		}
 	}
 	

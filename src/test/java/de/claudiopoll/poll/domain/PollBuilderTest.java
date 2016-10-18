@@ -37,13 +37,13 @@ public class PollBuilderTest {
 	}
 	
 	@Test
-	public void whenNewsAreCreatedWithoutIdThenExceptionIsThrown() {
+	public void whenPollsAreCreatedWithoutIdThenExceptionIsThrown() {
 
 		try {
 			new PollBuilder().withChannelId(1L).build();
 			fail();
 		} catch (InvalidPollCreationException ex) {
-			Assert.assertEquals("Invalid news creation", ex.getMessage());
+			Assert.assertEquals("Invalid poll creation", ex.getMessage());
 		}
 	}
 
