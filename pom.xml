@@ -29,7 +29,6 @@
 		</dependencies>
 	</dependencyManagement>
 	<properties>
-		<start-class>de.bonify.Main</start-class>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<mockito.version>1.10.19</mockito.version>
 		<embedded-redis.version>0.6</embedded-redis.version>
