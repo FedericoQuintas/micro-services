@@ -16,7 +16,7 @@ import de.claudiopoll.poll.exception.InvalidPollCreationException;
 import de.claudiopoll.poll.service.CreationPollService;
 import de.claudiopoll.poll.service.CreationPollServiceImpl;
 
-public class CreationNewsServiceTest {
+public class CreationPollServiceTest {
 
 	private CreationPollService creationNewsService;
 	private PollRepository mockedNewsRepository;
