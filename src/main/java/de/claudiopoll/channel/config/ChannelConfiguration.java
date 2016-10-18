@@ -13,7 +13,7 @@ import de.claudiopoll.channel.service.ChannelServiceImpl;
 
 @Configuration
 @ComponentScan
-@EntityScan("de.bonify.channel")
+@EntityScan("de.claudiopoll.channel")
 public class ChannelConfiguration {
 
 	@Bean

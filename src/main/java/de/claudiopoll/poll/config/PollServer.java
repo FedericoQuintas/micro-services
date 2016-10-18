@@ -13,11 +13,9 @@ public class PollServer	 {
 
 	public static void main(String[] args) throws InterruptedException {
 
-		System.setProperty("spring.config.name", "news-server");
+		System.setProperty("spring.config.name", "poll-server");
 
 		SpringApplication.run(PollServer.class, args);
-		
 
-		System.exit(0);
 	}
 }

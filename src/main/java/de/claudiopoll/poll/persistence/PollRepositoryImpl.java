@@ -7,12 +7,12 @@ import redis.clients.jedis.Jedis;
 import de.claudiopoll.poll.domain.PollRepository;
 import de.claudiopoll.poll.domain.Poll;
 
-public class NewsRepositoryImpl implements PollRepository {
+public class PollRepositoryImpl implements PollRepository {
 
 	private SessionFactory sessionFactory;
 	private Jedis jedis;
 
-	public NewsRepositoryImpl(SessionFactory sessionFactory, Jedis jedis) {
+	public PollRepositoryImpl(SessionFactory sessionFactory, Jedis jedis) {
 		this.sessionFactory = sessionFactory;
 		this.jedis = jedis;
 	}

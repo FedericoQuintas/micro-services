@@ -20,7 +20,7 @@ public class NotificationSenderJobImpl implements NotificationSenderJob {
 		this.notificationRepository = notificationRepository;
 	}
 
-	@Scheduled(fixedRate = 5000)
+	@Scheduled(fixedRate = 50000)
 	public void sendNotifications() {
 		
 		List<String> channelIds = notificationRepository.getMessages(BATCH_SIZE);
