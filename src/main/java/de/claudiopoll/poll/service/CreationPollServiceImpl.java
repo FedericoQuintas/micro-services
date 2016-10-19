@@ -1,28 +1,25 @@
 package de.claudiopoll.poll.service;
 
-import de.claudiopoll.notification.queue.NotificationQueue;
-import de.claudiopoll.poll.domain.PollRepository;
 import de.claudiopoll.poll.domain.Poll;
 import de.claudiopoll.poll.domain.PollBuilder;
+import de.claudiopoll.poll.domain.PollRepository;
 
 public class CreationPollServiceImpl implements CreationPollService {
 
-	private PollRepository newsRepository;
-	private NotificationQueue notificationQueue;
+	private PollRepository pollRepository;
 
-	public CreationPollServiceImpl(PollRepository newsRepository, NotificationQueue notificationQueue) {
-		this.newsRepository = newsRepository;
-		this.notificationQueue = notificationQueue;
+	public CreationPollServiceImpl(PollRepository newsRepository) {
+		this.pollRepository = newsRepository;
 	}
 
 	@Override
 	public Poll createNews(Long channelId) {
 		
-		Long nextId = newsRepository.getNextId();
+		Long nextId = pollRepository.getNextId();
 
 		Poll news = new PollBuilder().withId(nextId).withChannelId(channelId).build();
 
-		newsRepository.store(news);
+		pollRepository.store(news);
 		
 		addNotification(channelId);
 
@@ -31,7 +28,7 @@ public class CreationPollServiceImpl implements CreationPollService {
 
 	private void addNotification(Long channelId) {
 
-		notificationQueue.notify(channelId.toString());
+//		notificationQueue.notify(channelId.toString());
 	}
 
 }

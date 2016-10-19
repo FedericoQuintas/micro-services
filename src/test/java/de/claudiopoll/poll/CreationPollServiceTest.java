@@ -27,7 +27,7 @@ public class CreationPollServiceTest {
 		mockedNewsRepository = mock(PollRepository.class);
 		when(mockedNewsRepository.getNextId()).thenReturn(new Long(1));
 		mockedNotificationQueue = mock(NotificationQueue.class);
-		creationNewsService = new CreationPollServiceImpl(mockedNewsRepository, mockedNotificationQueue);
+		creationNewsService = new CreationPollServiceImpl(mockedNewsRepository);
 	}
 	
 	@Test

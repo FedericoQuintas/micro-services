@@ -1,4 +1,4 @@
-package de.claudiopoll.notification.service;
+package de.claudiopoll.notification.sender;
 
 import java.util.List;
 import java.util.Map;
@@ -8,7 +8,6 @@ import org.springframework.scheduling.annotation.Scheduled;
 
 import de.claudiopoll.channel.service.ChannelService;
 import de.claudiopoll.notification.domain.NotificationRepository;
-import de.claudiopoll.notification.sender.NotificationSenderJob;
 
 public class NotificationSenderJobImpl implements NotificationSenderJob {
 
@@ -25,7 +24,7 @@ public class NotificationSenderJobImpl implements NotificationSenderJob {
 		
 		List<String> channelIds = notificationRepository.getMessages(BATCH_SIZE);
 		
-		Map<Long, Set<Long>> subscribers = channelService.getSubscribersByChannel(channelIds);
+//		Map<Long, Set<Long>> subscribers = channelService.getSubscribersByChannel(channelIds);
 		
 		//Enviar Notis (there are news in your channels)
 		
